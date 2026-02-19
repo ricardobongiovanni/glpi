@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: glpi
+  namespace: glpi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: glpi
+  template:
+    metadata:
+      labels:
+        app: glpi
+    spec:
+      containers:
+      - name: glpi
+        image: crcebrace.azurecr.io/glpi:latest
+        ports:
+        - containerPort: 80
+        # Se o seu container precisar de variáveis de ambiente ou volumes, adicione aqui
